@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="by.vgdn1942.autobrighthelper"
+    android:sharedUserId="android.uid.system" >
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:label="Autobright Helper">
+        <receiver android:name="by.vgdn1942.autobrighthelper.AutoRun"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter android:priority="100" >
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT"/>
+                <action android:name="android.intent.action.SCREEN_ON"/>
+            </intent-filter>
+        </receiver>
+        <service android:name="by.vgdn1942.autobrighthelper.BackgroundService"/>
+    </application>
+</manifest>
